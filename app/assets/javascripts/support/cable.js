@@ -8,4 +8,4 @@ $(document).ready(function() {
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer($('body').data('action-cable-url'));
-});
+}.bind(this));
