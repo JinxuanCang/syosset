@@ -18,6 +18,7 @@ Although the app is deployable to Heroku out of the box, certain functionality w
   - To report application errors to Sentry: `SENTRY_DSN`
   - To report Content Security Policy violations, you can set a report URI: `CSP_REPORT_URI`
   - To automatically generate alt tags for images, you must have credentials for Azure Cognitive Services: `AZURE_REGION` and `AZURE_COGNITIVE_SERVICES_KEY`
+  - If you want to use a custom URL for client WebSocket connections, you can set this: `ACTION_CABLE_HOST`
 
 ## Development Environment
 In development and test environments, you can set all environment variables via a `.env` file in the project's root directory:
@@ -39,4 +40,6 @@ CSP_REPORT_URI=https://sentry.io/api/xxxxxx/csp-report/?sentry_key=xxxxxxxxx
 
 AZURE_REGION=eastus
 AZURE_COGNITIVE_SERVICES_KEY=xxxxxxxxxxxx
+
+ACTION_CABLE_HOST=live.syosseths.com
 ```
