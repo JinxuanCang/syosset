@@ -9,7 +9,7 @@ class Integration
 
   def self.notify_all(event, parameters)
     Integration.each do |i|
-      if i.provider.method_defined? event
+      if i.create_provider.respond_to? event
         NotifyIntegrationJob.perform_later(i.id.to_s, event.to_s, parameters)
       end
     end

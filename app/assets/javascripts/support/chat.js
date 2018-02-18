@@ -18,7 +18,9 @@ Support.prototype = {
   openThread: function(callback) {
     this.fetchThread(function(id) {
       var thread = new Thread(id, this.log);
-      setInterval(thread.update.bind(thread), 1500); // update every 1.5s
+      App.cable.subscriptions.create({ channel: "SupportChannel", thread: id }, {
+        received: thread.onMessage.bind(thread)
+      });
       thread.update(function() {
         callback(thread);
       });
@@ -29,7 +31,6 @@ Support.prototype = {
 function Thread(id, logger) {
   this.id = id;
   this.logger = logger;
-  this.messages = [];
   this.onMessageCallback = function(msg){this.log(msg.sender.name + ": " + msg.message)};
 }
 Thread.prototype = {
@@ -38,7 +39,7 @@ Thread.prototype = {
   },
 
   fetchMessages: function(callback) {
-    $.ajax(this.id + '/messages', {context: this, headers: {'X-CSRF-Token': Rails.csrfToken()}})
+    $.ajax('/threads/' + this.id + '/messages', {context: this, headers: {'X-CSRF-Token': Rails.csrfToken()}})
       .done(function(messages) {
         this.log(messages.length + " messages retrieved");
         callback(messages);
@@ -48,24 +49,12 @@ Thread.prototype = {
       });
   },
 
-  fetchNewMessages: function(callback) {
-    this.fetchMessages(function(messages) {
-      var newMessages = messages.filter(function(msg){return !this.messages.includes(msg.id)}.bind(this));
-      this.messages += newMessages.map(function(msg){return msg.id});
-      callback(newMessages);
-    }.bind(this));
-  },
-
   sendMessage: function(text) {
-    $.ajax(this.id + '/messages', {method: "POST", data: {text: text}, context: this, headers: {'X-CSRF-Token': Rails.csrfToken()}})
-      .done(function(message) {
-        this.messages += message.id;
-        this.onMessage(message);
-      });
+    $.ajax('/threads/' + this.id + '/messages', {method: "POST", data: {text: text}, context: this, headers: {'X-CSRF-Token': Rails.csrfToken()}});
   },
 
   update: function(callback) {
-    this.fetchNewMessages(function(messages) {
+    this.fetchMessages(function(messages) {
       if (typeof callback == 'function') callback();
       messages.forEach(function(msg){this.onMessage(msg)}.bind(this));
     }.bind(this));

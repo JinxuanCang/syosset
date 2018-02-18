@@ -8,7 +8,7 @@ class MessageThreadsController < ApplicationController
 
     @thread = MessageThread.thread_for(current_user)
     @thread.notify_spagett
-    render :plain => "/threads/#{@thread.id}"
+    render :plain => @thread.id
   end
 
   def read_messages
@@ -25,6 +25,7 @@ class MessageThreadsController < ApplicationController
     end
 
     message = @thread.messages.create(message: params[:text], user: user)
+    SupportChannel.broadcast_to(@thread, message.to_json)
     message.notify_spagett unless current_holder.bot
     render :json => message.to_json
   end
