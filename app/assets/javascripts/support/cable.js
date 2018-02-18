@@ -3,11 +3,9 @@
 //
 //= require action_cable
 //= require_self
-//= require_tree ./channels
 
-(function() {
+$(document).ready(function() {
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer($('body').data('action-cable-url'));
-
-}).call(this);
+});
