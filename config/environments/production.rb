@@ -58,8 +58,8 @@ Rails.application.configure do
     host = "#{ENV["HEROKU_APP_NAME"]}.herokuapp.com"
   end
   config.action_cable.url = "wss://#{host}/cable"
-  config.action_cable.allowed_request_origins = ['https://syosseths.com', /https:\/\/*.syosseths.com/,
-    /https:\/\/syosset-staging*.herokuapp.com/]
+  config.action_cable.allowed_request_origins = [/^https:\/\/.*syosseths\.com$/,
+    /https:\/\/syosset-staging.*herokuapp\.com/]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
