@@ -1,12 +1,12 @@
-@import "mixins.scss";
-@import "theme-default.scss";
+@import "mixins";
+@import "theme-default";
 
 /* ======= Events Page ======= */
-.events-wrapper {  
+.events-wrapper {
     .events-item {
 
         .date-label {
-            background: $smoky-white;               
+            background: $smoky-white;
         }
         .details {
             .time {
@@ -16,8 +16,7 @@
                 margin-right: 5px;
             }
         }
-        
+
     }
 
 }
-    

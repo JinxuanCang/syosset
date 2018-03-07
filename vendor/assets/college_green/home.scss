@@ -1,5 +1,5 @@
-@import "mixins.scss";
-@import "theme-default.scss";
+@import "mixins";
+@import "theme-default";
 
 /* ======= Home Page ======= */
 .home-page {
@@ -32,7 +32,7 @@
     .carousel-controls {
         a {
             .fa {
-                transition: all 0.4s ease-in-out;
+                @include transition (all 0.4s ease-in-out);
                 background: lighten($text-color, 60%);
                 color: #fff;
                 display: inline-block;
@@ -78,7 +78,8 @@
 
         .btn-cta {
             font-size: 20px;
-            margin-top: 30px;
+            margin-top: 0;
+            margin-bottom: 15px;
             font-family: 'Open Sans', arial, sans-serif;
         }
     }
@@ -125,6 +126,7 @@
             padding-left: 55px;
             border-bottom: 1px solid $divider;
             padding-bottom: 10px;
+            margin-bottom: 15px;
 
             .date-label {
                 background: #fff;
@@ -218,6 +220,16 @@
             }
         }
 
+        .quote {
+	        padding-left: 15px;
+	        border-left: 4px solid lighten($grey, 30%);
+        }
+
+        .source {
+	        position: relative;
+	        padding-top: 30px;
+        }
+
         .people {
             margin-top: 10px;
             .name {
@@ -226,6 +238,13 @@
             .title {
                 color: #999;
             }
+        }
+        .profile {
+	        position: absolute;
+	        right: 5px;
+	        bottom: 0;
+	        width: 60px;
+	        height: 60px;
         }
 
     }
@@ -241,9 +260,9 @@
                  margin-right: 0;
                  text-align: center;
                  img {
-                    opacity: 0.6;
+                    @include opacity(0.6);
                     &:hover {
-                        opacity: 1;
+                        @include opacity(1);
                     }
                     margin: 0 auto;
                  }
@@ -253,10 +272,10 @@
              background: none;
              width: auto;
              top: 20px;
-             text-shadow: none;
-             opacity: 1;
+             @include text-shadow(none);
+             @include opacity(1);
              filter: alpha(opacity=100);
-             transition: all 0.4s ease-in-out;
+             @include transition (all 0.4s ease-in-out);
              .fa {
                  color: $divider;
                  font-weight: bold;

@@ -2,7 +2,7 @@
   "name": "syosset",
   "private": true,
   "dependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap": "^4.0.0",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "font-awesome": "^4.7.0",
     "fontawesome-iconpicker": "^1.3.1",

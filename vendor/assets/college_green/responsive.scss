@@ -1,29 +1,29 @@
-@import "mixins.scss";
-@import "theme-default.scss";
+@import "mixins";
+@import "theme-default";
 
-/* Extra small devices (phones, less than 768px) */
-@media (max-width: 767px) { 
-    
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+
     .wrapper {
         min-height: inherit;
-        margin-bottom:0; 
+        margin-bottom:0;
         &:after {
             content: none;
         }
     }
-    
+
     .footer {
-        height: auto;  
+        height: auto;
     }
 
     .pull-right, .pull-left {
         float: none !important;
     }
-    
+
     .logo {
         text-align: center;
     }
-    
+
     .header .contact {
         p {
             text-align: center;
@@ -40,7 +40,7 @@
             display: inline-block;
         }
     }
-    
+
     .header br {
         display: none;
     }
@@ -49,14 +49,17 @@
         margin: 0 auto;
         li {
             float: none;
-            display: inline-block;            
+            display: inline-block;
         }
     }
+
+
     .main-nav .navbar-collapse {
-        padding-left:15px;
-        padding-right:15px;
         border-top: 0;
         @include box-shadow(0);
+    }
+    .main-nav .nav .nav-item .nav-link.active:before {
+	    display: none;
     }
     .navbar-nav {
         margin-top: 0;
@@ -67,11 +70,11 @@
     .header .search-form .form-group {
         display: inline-block;
     }
-    
+
     .header .search-form .form-control {
-        width: 210px;     
+        width: 210px;
     }
-    
+
     .main-nav .nav .nav-item.active > a:before {
        content: none;
     }
@@ -79,7 +82,7 @@
     .main-nav .nav .nav-item .dropdown-submenu > .dropdown-menu {
         position: static;
         left: auto;
-        margin-left: 0;          
+        margin-left: 0;
     }
     .main-nav .nav .nav-item .dropdown-submenu .dropdown-menu {
         a {
@@ -91,7 +94,7 @@
         .dropdown-submenu {
             .dropdown-menu {
                 a {
-                    
+
                     padding-left: 45px;
                     &:hover {
                         padding-left: 49px;
@@ -126,9 +129,7 @@
     .flexslider .flex-control-nav {
         display: none;
     }
-    .home-page .promo .btn-cta {
-        margin-top: 0;
-    }
+
     .home-page .news .thumb {
         width: 60px;
         height:60px;
@@ -136,16 +137,17 @@
     .home-page .news .news-item {
         padding-left: 75px;
     }
-    
+
     .home-page .course-finder .keywords {
-        padding-left: 15px;
+        padding-left: 5px;
         margin-top: 10px;
+        width: 200px;
     }
-    
+
     .home-page .course-finder .keywords input {
-        width: 180px;
+        width: 200px;
     }
-    
+
     .home-page .video .video-iframe {
         height: auto;
     }
@@ -183,7 +185,7 @@
         display: block;
     }
     .page-wrapper .breadcrumbs {
-        text-align: center;       
+        text-align: center;
         display: block;
     }
     .page-wrapper .breadcrumbs ul {
@@ -205,19 +207,23 @@
 
 }
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
     .wrapper {
         min-height: inherit;
-        margin-bottom:0; 
+        margin-bottom:0;
         &:after {
             content: none;
         }
     }
-    
+
+    .header .top-bar .search-form {
+	    text-align: right;
+    }
+
     .footer {
-        height: auto;  
-    }    
+        height: auto;
+    }
     .footer .bottom-bar .social li {
         float: left;
     }
@@ -234,13 +240,18 @@
         min-height: inherit;
     }
     .page-wrapper .album-cover{
-           min-height: 360px; 
+           min-height: 360px;
     }
-    
-    
+    .home-page .course-finder .keywords input {
+	    width: 180px;
+    }
+
+
+
+
 }
 
-/* Medium devices (desktops, 992px and up) */
+/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     .home-page .testimonials .carousel .item {
         min-height: 298px;
@@ -251,6 +262,13 @@
     .home-page .video .video-iframe {
         height: 287px;
     }
+
+    .home-page .promo .btn-cta {
+	    margin-top: 30px;
+    }
+    .home-page .course-finder .keywords input {
+	    width: 190px;
+    }
     .footer .bottom-bar .social li {
         float: right;
     }
@@ -258,7 +276,7 @@
         min-height: 100px;
     }
     .page-wrapper .album-cover{
-           min-height: 360px; 
+           min-height: 360px;
     }
     /* Sticky Footer */
     html, body {
@@ -268,7 +286,7 @@
     body {
         font-size: 13px;
     }
-    
+
     .wrapper {
         min-height: 100%;
         margin-bottom: -344px; /* equal to footer height */
@@ -278,19 +296,17 @@
             height: 344px; /* must be the same height as footer */
         }
     }
-    
+
     .footer {
-        height: 344px; /* must be the same height as footer */   
+        height: 344px; /* must be the same height as footer */
     }
 
 }
 
-/* Large devices (large desktops, 1200px and up) */
+/* Extra Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     .home-page .course-finder .keywords input {
-        width: 255px;
+        width: 250px;
     }
-    
+
 }
-
-
